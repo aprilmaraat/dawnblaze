@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+body {
+  margin: 0;
+  overflow: auto;
+  font-family: "Raleway", serif;
+  background-color: #e9eaee; }
+
+.default-icon-size, .header-panel > .header-button-container > .header-button-right > .header-button {
+  width: 50px;
+  height: 50px; }
+
+.hidden {
+  display: none; }
+
+.center-position, .header-panel > .header-button-container, .header-panel > .header-button-container > .header-button-left > .search-panel, .header-panel > .header-button-container > .header-button-right > .header-button, .header-panel > .header-button-container > .header-button-right > .notification-number {
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+.unselectable, .header-panel > .header-button-container > .header-button-right > .header-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(font/iconfont/MaterialIcons-Regular.eot);
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(font/iconfont/MaterialIcons-Regular.woff2) format("woff2"), url(font/iconfont/MaterialIcons-Regular.woff) format("woff"), url(font/iconfont/MaterialIcons-Regular.ttf) format("truetype"); }
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
+.header-panel {
+  width: 100%;
+  height: 50px;
+  min-width: 400px;
+  position: fixed;
+  background-color: #c21a00;
+  z-index: 1;
+  top: 0; }
+  .header-panel > .header-button-container {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    min-width: inherit; }
+    .header-panel > .header-button-container > .header-button-left > .search-panel {
+      position: absolute;
+      width: 40%;
+      height: 30px;
+      font-size: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px; }
+      .header-panel > .header-button-container > .header-button-left > .search-panel::-webkit-input-placeholder {
+        font-weight: 400; }
+      .header-panel > .header-button-container > .header-button-left > .search-panel:-moz-placeholder {
+        font-weight: 400; }
+      .header-panel > .header-button-container > .header-button-left > .search-panel::-moz-placeholder {
+        font-weight: 400; }
+      .header-panel > .header-button-container > .header-button-left > .search-panel:-ms-input-placeholder {
+        font-weight: 400; }
+      .header-panel > .header-button-container > .header-button-left > .search-panel:focus {
+        outline: none; }
+    .header-panel > .header-button-container > .header-button-right {
+      position: relative;
+      float: right; }
+      .header-panel > .header-button-container > .header-button-right > .header-button {
+        position: relative;
+        text-align: center;
+        color: #991400;
+        line-height: 50px;
+        font-size: 30px; }
+        .header-panel > .header-button-container > .header-button-right > .header-button:hover {
+          cursor: default; }
+        .header-panel > .header-button-container > .header-button-right > .header-button:active {
+          color: #e9eaee; }
+        .header-panel > .header-button-container > .header-button-right > .header-button:hover {
+          cursor: pointer; }
+      .header-panel > .header-button-container > .header-button-right > .header-button-active {
+        color: white; }
+      .header-panel > .header-button-container > .header-button-right > .notification-number {
+        position: absolute;
+        background-color: #ff2200;
+        border-radius: 3px;
+        color: white;
+        padding: 2px;
+        width: 20px;
+        height: 13px;
+        line-height: 13px;
+        margin-top: 6px;
+        margin-left: 30px;
+        text-align: center;
+        font-size: 12px;
+        display: inline-block; }
+
+/*# sourceMappingURL=header.css.map */

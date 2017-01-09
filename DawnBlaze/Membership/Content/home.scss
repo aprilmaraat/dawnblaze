@@ -1,0 +1,64 @@
+@import "generic.scss";
+
+.newsfeed-container{
+	width: 60%;
+	min-width: 400px;
+	max-width: 700px;
+	height: 100%;
+	margin: 5px;
+
+	& > .update-status{
+		width: 100%;
+		min-width: inherit;
+		max-width: inherit;
+		height: 60px;
+		background-color: white;
+		border: solid 1px $main_border_color;
+		position: relative;
+
+		& > .update-status-panel{
+	        @extend .center-position;
+	        position: absolute;
+	        width: 95%;
+	        height: 30px;
+	        font-size: 15px;
+	        padding-left: 10px;
+	        padding-right: 10px;
+	        /*margin-bottom: 15px;*/
+	        border: 0;
+
+	        &::-webkit-input-placeholder {
+	          font-weight: 400;
+	        }
+
+	        &:-moz-placeholder {
+	          font-weight: 400;
+	        }
+
+	        &::-moz-placeholder {
+	          font-weight: 400;
+	        }
+
+	        &:-ms-input-placeholder {
+	          font-weight: 400;
+	        }
+
+	        &:focus{
+	          outline: none;
+	        }
+
+	      } // .update-status-panel
+
+	}
+
+	& > .newsfeed-item{
+		width: 100%;
+		min-width: inherit;
+		max-width: inherit;
+		height: 400px;
+		background-color: white;
+		border: solid 1px $main_border_color;
+		margin-top: 10px;
+	}
+
+}

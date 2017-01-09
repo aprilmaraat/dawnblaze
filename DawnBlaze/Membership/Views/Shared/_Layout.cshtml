@@ -1,0 +1,26 @@
+﻿@using System.Web.Optimization;
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/layout")
+    @Scripts.Render("~/Scripts/jquery")
+</head>
+<body>
+	
+	@RenderBody()
+
+	@*-----------------------------
+	@Html.Partial("_Navigation")
+
+	<div class='content-panel'>
+      <div class='content-container'>
+      	@RenderBody()
+      </div>
+    </div>
+
+    @Html.Partial("_ActivityPanel")
+    -----------------------------*@
+</body>
+</html>
+

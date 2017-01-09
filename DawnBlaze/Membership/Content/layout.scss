@@ -1,0 +1,19 @@
+@import "generic.scss";
+
+.content-panel{
+  width: 100%;
+  height: calc(100% - 50px);
+  min-width: 400px;
+  margin-top: 50px;
+
+  & > .content-container{
+    @extend .center-position;
+    position: relative;
+    width: 60%;
+    height: 100%;
+    min-width: inherit;
+    padding: 5px;
+
+  } // .content-container
+
+} // .content-panel
