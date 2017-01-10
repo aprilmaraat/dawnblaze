@@ -5,9 +5,19 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/layout")
     @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/Shared/Layout")
 </head>
 <body>
 	
+    <div class="loader-container hidden">
+        <div class="loader cssload-container">
+            <div class="loader-label"></div>
+            <div class="cssload-tube-tunnel"></div>
+        </div>
+
+        <div class="page-cover"></div>
+    </div>
+
 	@RenderBody()
 
 	@*-----------------------------

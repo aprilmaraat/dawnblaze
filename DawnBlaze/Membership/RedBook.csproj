@@ -95,7 +95,6 @@
     <Folder Include="Scripts\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Login\" />
-    <Folder Include="Scripts\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -121,6 +120,20 @@
     <Content Include="Content\font\iconfont\material-icons.css" />
     <Content Include="Views\Shared\_ActivityPanel.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Scripts\Login\index.js" />
+    <Content Include="Scripts\jquery-1.12.0.min.js" />
+    <Content Include="Content\activity-panel.css" />
+    <Content Include="Content\activity-panel.scss" />
+    <Content Include="Content\generic.css" />
+    <Content Include="Content\generic.scss" />
+    <Content Include="Content\header.css" />
+    <Content Include="Content\header.scss" />
+    <Content Include="Content\home.css" />
+    <Content Include="Content\home.scss" />
+    <Content Include="Content\layout.css" />
+    <Content Include="Content\layout.scss" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\login.scss" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -135,6 +148,12 @@
     <None Include="Content\font\iconfont\MaterialIcons-Regular.woff2" />
     <None Include="Content\font\iconfont\README.md" />
     <None Include="Content\font\iconfont\codepoints" />
+    <None Include="Content\activity-panel.css.map" />
+    <None Include="Content\generic.css.map" />
+    <None Include="Content\header.css.map" />
+    <None Include="Content\home.css.map" />
+    <None Include="Content\layout.css.map" />
+    <None Include="Content\login.css.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RedBook.Data\RedBook.Data.csproj">

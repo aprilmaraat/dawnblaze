@@ -1,17 +1,19 @@
 ﻿@using System.Web.Optimization;
 @Styles.Render("~/Content/login")
-@Scripts.Render("~/Scripts/login")
+@Scripts.Render("~/Scripts/Login/Index")
 
 <div class="login-container">
-	<div class="login-label">TENDERLOIN</div>
+	<div class="login-label">LOGIN</div>
+
+	<div class="credential-error hidden">
+		Invalid credentials
+	</div>
 
 	<div class="credential">
-		<div class="label"></div>
-		<input class="username login-credential" type="text" placeholder="Username">
+		<input id="username" class="login-credential" type="text" placeholder="Username">
 	</div>
 	<div class="credential">
-		<div class="label"></div>
-		<input class="password login-credential" type="password" placeholder="Password">
+		<input id="password" class="login-credential" type="password" placeholder="Password">
 	</div>
 	<div class="login-button-container">
 		<div class="login-button">LOGIN</div>

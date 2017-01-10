@@ -29,9 +29,12 @@ namespace Membership
 			// JS
 
 			bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
-				"~/Scripts/jquery-1.12.0.js"));
+				"~/Scripts/jquery-1.12.0.min.js"));
 
-			bundles.Add(new ScriptBundle("~/Scripts/login").Include(
+			bundles.Add(new ScriptBundle("~/Scripts/Shared/Layout").Include(
+				"~/Scripts/Shared/layout.js"));
+
+			bundles.Add(new ScriptBundle("~/Scripts/Login/Index").Include(
 				"~/Scripts/Login/index.js"));
 
 			// CSS
