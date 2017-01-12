@@ -1,0 +1,34 @@
+﻿@using System.Web.Optimization;
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/layout")
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/Shared/Layout")
+</head>
+<body>
+	
+    <div class="loader-container hidden">
+        <div class="loader cssload-container">
+            <div class="loader-label"></div>
+            <div class="cssload-tube-tunnel"></div>
+        </div>
+
+        <div class="page-cover"></div>
+    </div>
+
+    @if(Request.IsAuthenticated){
+    	@Html.Partial("_Navigation")
+    	@Html.Partial("_ActivityPanel")
+    }
+
+	<div class='content-panel'>
+      <div class='content-container'>
+      	@RenderBody()
+      </div>
+    </div>
+
+</body>
+</html>
+
