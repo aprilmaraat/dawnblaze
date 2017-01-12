@@ -25,6 +25,8 @@ var navigation_object = function(){
             error: function() {
                 // Error Code
                 // Create "Something's wrong popup"
+                alert('Something went wrong. Unable to connect to server.');
+                location.reload(true);
             }
         });
     }
