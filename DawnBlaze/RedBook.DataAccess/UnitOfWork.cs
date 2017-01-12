@@ -1,5 +1,4 @@
 ﻿using System;
-using RedBook.Data;
 
 namespace RedBook.DataAccess
 {
