@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Web.Mvc.Ajax;
 using Membership.Data;
 using Membership.DataAccess;
+using RedBook.Models;
 
 namespace RedBook.Controllers
 {
 	public class LoginController : Controller
 	{
-		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
+//		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
 		private readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
 
 		public ActionResult Index ()
@@ -26,11 +28,24 @@ namespace RedBook.Controllers
 			return Json (creationResult, JsonRequestBehavior.AllowGet);
 		}
 
-		public JsonResult ValidateCredentials(string username, string password)
+		public ActionResult Logout()
 		{
-			var validationResult = _membershipProvider.ValidateUser(username, password);
+			FormsAuthentication.SignOut();
+			Session.Clear();
+			Session.RemoveAll();
+			return RedirectToAction("Index", "Home");
+		}
 
-			return Json (validationResult, JsonRequestBehavior.AllowGet);
+		[HttpPost]
+		public JsonResult ValidateCredentials(Login login)
+		{
+			var validationResult = _membershipProvider.ValidateUser(login.Username, login.Password);
+
+			if(validationResult){
+				FormsAuthentication.SetAuthCookie(login.Username, false);
+			}
+
+			return Json (validationResult);
 		}
 
 	}

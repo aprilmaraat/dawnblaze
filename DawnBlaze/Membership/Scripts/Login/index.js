@@ -19,22 +19,30 @@ var login_object = function(){
             var username = $('#username').val();
             var password = $('#password').val();
 
+            var login = {
+                'Username': username,
+                'Password': password
+            };
+
             var formData = new FormData();
-            formData.append('username', username);
-            formData.append('password', password);
+            // formData.append('username', username);
+            // formData.append('password', password);
+            formData.append('login', login);
 
             $.ajax({
                 url: 'Login/ValidateCredentials',
-                data: formData,
+                // data: formData,
+                data: login,
                 type: 'POST',
-                contentType: false,
-                processData: false,
+                // contentType: false,
+                // processData: false,
                 async: true,
                 cache: false,
                 success: function(data) {
                     // Success Code
+
                     if(data == true){
-                        alert(true);
+                        window.location.href = '/Home';
                     }
                     else{
                         isLoginError(true);

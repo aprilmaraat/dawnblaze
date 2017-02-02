@@ -102,6 +102,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Models\Login.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
