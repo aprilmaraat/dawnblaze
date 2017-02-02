@@ -5,11 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Data", "Membersh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.DataAccess", "Membership.DataAccess\Membership.DataAccess.csproj", "{0AC59CBB-5EE9-4CBD-90AF-C5AC3D3B4A06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedBook", "Membership\RedBook.csproj", "{A2C4CCAD-D69A-43D2-AA74-2829674A1DF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedBook.Data", "RedBook.Data\RedBook.Data.csproj", "{EC7F63F7-6C05-4DB8-8BCE-59A42C2E2260}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedBook.DataAccess", "RedBook.DataAccess\RedBook.DataAccess.csproj", "{FFE7ACE2-89AF-45F5-9356-C9977E1C837F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedBook", "RedBook\RedBook.csproj", "{A2C4CCAD-D69A-43D2-AA74-2829674A1DF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

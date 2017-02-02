@@ -25,17 +25,12 @@ var login_object = function(){
             };
 
             var formData = new FormData();
-            // formData.append('username', username);
-            // formData.append('password', password);
             formData.append('login', login);
 
             $.ajax({
                 url: 'Login/ValidateCredentials',
-                // data: formData,
                 data: login,
                 type: 'POST',
-                // contentType: false,
-                // processData: false,
                 async: true,
                 cache: false,
                 success: function(data) {
@@ -43,12 +38,13 @@ var login_object = function(){
 
                     if(data == true){
                         window.location.href = '/Home';
+                        layout_object.toggleLoading();
                     }
                     else{
                         isLoginError(true);
+                        layout_object.toggleLoading();
                     }
 
-                    layout_object.toggleLoading();
                 },
                 error: function() {
                     // Error Code
