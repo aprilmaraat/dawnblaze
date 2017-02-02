@@ -46,9 +46,9 @@
 				background-color: $theme_color_dark;
 			}
 
-		}
+		} // & > .login-button{
 
-	}
+	} // & .login-button-container{
 
 	& .credential-error{
 		@extend .center-position;
@@ -75,7 +75,7 @@
 			bottom: -16px;
 		}
 
-	}
+	} // & .credential-error{
 
 	& > .credential{
 		width: 100%;
@@ -114,6 +114,40 @@
 
 		} // .login-credential
 
+	} // & > .credential{
+
+} // .login-container{
+
+.options-container{
+	@extend .center-position;
+	position: relative;
+	width: 380px;
+	min-width: 380px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 600px;
+	color: gray;
+
+	a{
+		text-decoration: none !important;
+
+		&:visited{
+			color: gray;
+		}
+
+		&:hover{
+			color: black;
+		}
+
+	}
+
+	.register-link{
+		float: left;
+	}
+
+	.forgot-password-link{
+		float: right;
 	}
 
 }

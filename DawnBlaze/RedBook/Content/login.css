@@ -12,7 +12,7 @@ body {
 .hidden {
   display: none; }
 
-.center-position, .loader-container .loader, .login-container, .login-container .login-button-container > .login-button, .login-container .credential-error, .login-container > .credential .login-credential {
+.center-position, .loader-container .loader, .login-container, .login-container .login-button-container > .login-button, .login-container .credential-error, .login-container > .credential .login-credential, .options-container {
   margin: auto;
   top: 0;
   left: 0;
@@ -212,5 +212,25 @@ body {
       .login-container > .credential .login-credential:focus {
         outline: none;
         border: solid 1px #c21a00; }
+
+.options-container {
+  position: relative;
+  width: 380px;
+  min-width: 380px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 600px;
+  color: gray; }
+  .options-container a {
+    text-decoration: none !important; }
+    .options-container a:visited {
+      color: gray; }
+    .options-container a:hover {
+      color: black; }
+  .options-container .register-link {
+    float: left; }
+  .options-container .forgot-password-link {
+    float: right; }
 
 /*# sourceMappingURL=login.css.map */
