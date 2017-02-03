@@ -14,7 +14,6 @@ namespace RedBook.App_Start
 				"Default",
 				"{controller}/{action}/{id}",
 				new { controller = "Home", action = "Index", id = "" }
-//				new[] { "RedBook.Controllers" }
 			);
 
 		}

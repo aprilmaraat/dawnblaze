@@ -2,24 +2,35 @@
 @Styles.Render("~/Content/login")
 @Scripts.Render("~/Scripts/Login/Index")
 
-<div class="login-container">
-	<div class="login-label">LOGIN</div>
+@{
+    ViewBag.Title = "REDBOOK - Sign in";
+}
 
-	<div class="credential-error hidden">
-		Invalid credentials
+<div class="login-content-container">
+
+	<div class="login-container">
+		<div class="login-label">REDBOOK</div>
+
+		<div class="credential-error hidden">
+			Invalid credentials
+		</div>
+
+		<div class="credential">
+			<input id="username" class="login-credential" type="text" placeholder="Username">
+		</div>
+
+		<div class="credential">
+			<input id="password" class="login-credential" type="password" placeholder="Password">
+		</div>
+
+		<div class="login-button-container">
+			<div class="login-button">SIGN IN</div>
+		</div>
 	</div>
 
-	<div class="credential">
-		<input id="username" class="login-credential" type="text" placeholder="Username">
+	<div class="options-container">
+		<a class="register-link" href="@Url.Action("Register", "Login")">Sign up</a> 
+		<a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Login")">Forgot password</a>
 	</div>
-	<div class="credential">
-		<input id="password" class="login-credential" type="password" placeholder="Password">
-	</div>
-	<div class="login-button-container">
-		<div class="login-button">LOGIN</div>
-	</div>
-</div>
-<div class="options-container">
-	<a class="register-link" href="@Url.Action("Register", "Login")">Register</a> 
-	<a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Login")">Forgot Password</a>
+
 </div>

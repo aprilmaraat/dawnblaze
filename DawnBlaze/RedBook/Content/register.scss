@@ -1,12 +1,148 @@
 @import "generic.scss";
 
-.register-container{
-    @extend .center-position;
+.register-content-container{
+	@extend .center-position;
 	position: absolute;
 	width: 380px;
 	min-width: 380px;
-	height: 300px;
+	// height: 430px;
+    height: 415px;
+}
+
+.register-container{
+    @extend .center-position;
+    position: relative;
+	width: 380px;
+	min-width: 380px;
+    height: 400px;
+	height: 385px;
 	background-color: white;
 	color: $theme_color;
 	border: solid 1px $main_border_color;
-}
+
+    & .register-label{
+		@extend .center-position;
+		width: 90%;
+		height: 75px;
+		text-align: center;
+		line-height: 75px;
+		color: $theme_color;
+		font-size: 20px;
+		border-bottom: solid 1px $main_border_color;
+        margin-bottom: 10px;
+	} // & .register-label{
+
+    & .register-button-container{
+		position: absolute;
+		width: 100%;
+		height: calc(100% - 225px);
+
+		& > .register-button{
+			@extend .center-position;
+			@extend  .unselectable;
+			position: absolute;
+			width: 100px;
+			height: 40px;
+			margin-top: 10px;
+			text-align: center;
+			line-height: 40px;
+			background-color: $background-color;
+			color: white;
+			border: solid 1px $main_border_color;
+
+			&:hover{
+				background-color: $theme-color;
+				cursor: pointer;
+			}
+
+			&:active{
+				background-color: $theme_color_dark;
+			}
+
+		} // & > .registerbutton{
+
+	} // & .register-button-container{
+
+    & .credential{
+        width: 100%;
+        height: 75px;
+		position: relative;
+
+        & .credential-label{
+            @extend .center-position;
+            position: relative;
+            width: 90%;
+            height: 17px;
+            font-size: 10px;
+            line-height: 17px;
+        }
+
+        & .register-credential{
+            @extend .center-position;
+			position: absolute;
+			width: 90%;
+			height: 40px;
+			font-size: 15px;
+			padding-left: 10px;
+			padding-right: 10px;
+
+            &::-webkit-input-placeholder {
+				font-weight: 300;
+			}
+
+			&:-moz-placeholder {
+				font-weight: 300;
+			}
+
+			&::-moz-placeholder {
+				font-weight: 300;
+			}
+
+			&:-ms-input-placeholder {
+				font-weight: 300;
+			}
+
+			&:focus{
+				outline: none;
+				border: solid 1px $theme_color;
+			}
+
+        }
+
+    }
+
+} // .register-container{
+
+.options-container{
+	@extend .center-position;
+	position: relative;
+	width: 380px;
+	min-width: 380px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+
+	& a{
+		text-decoration: none !important;
+		color: gray;
+
+		&:visited{
+			color: gray;
+		}
+
+		&:hover{
+			color: black;
+		}
+
+	}
+
+	.login-link{
+		float: left;
+	}
+
+	.forgot-password-link{
+		float: right;
+	}
+
+} // .options-container{

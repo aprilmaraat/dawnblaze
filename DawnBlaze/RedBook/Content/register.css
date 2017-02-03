@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 body {
+  position: relative;
   margin: 0;
   overflow: auto;
   font-family: "Raleway", serif;
@@ -12,14 +13,14 @@ body {
 .hidden {
   display: none; }
 
-.center-position, .loader-container .loader, .register-container {
+.center-position, .loader-container .loader, .register-content-container, .register-container, .register-container .register-label, .register-container .register-button-container > .register-button, .register-container .credential .credential-label, .register-container .credential .register-credential, .options-container {
   margin: auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0; }
 
-.unselectable {
+.unselectable, .register-container .register-button-container > .register-button {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -135,13 +136,96 @@ body {
   100% {
     -moz-transform: scale(1);
     transform: scale(1); } }
-.register-container {
+.register-content-container {
   position: absolute;
   width: 380px;
   min-width: 380px;
-  height: 300px;
+  height: 415px; }
+
+.register-container {
+  position: relative;
+  width: 380px;
+  min-width: 380px;
+  height: 400px;
+  height: 385px;
   background-color: white;
   color: #c21a00;
   border: solid 1px #e6e6e6; }
+  .register-container .register-label {
+    width: 90%;
+    height: 75px;
+    text-align: center;
+    line-height: 75px;
+    color: #c21a00;
+    font-size: 20px;
+    border-bottom: solid 1px #e6e6e6;
+    margin-bottom: 10px; }
+  .register-container .register-button-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 225px); }
+    .register-container .register-button-container > .register-button {
+      position: absolute;
+      width: 100px;
+      height: 40px;
+      margin-top: 10px;
+      text-align: center;
+      line-height: 40px;
+      background-color: #e9eaee;
+      color: white;
+      border: solid 1px #e6e6e6; }
+      .register-container .register-button-container > .register-button:hover {
+        background-color: #c21a00;
+        cursor: pointer; }
+      .register-container .register-button-container > .register-button:active {
+        background-color: #991400; }
+  .register-container .credential {
+    width: 100%;
+    height: 75px;
+    position: relative; }
+    .register-container .credential .credential-label {
+      position: relative;
+      width: 90%;
+      height: 17px;
+      font-size: 10px;
+      line-height: 17px; }
+    .register-container .credential .register-credential {
+      position: absolute;
+      width: 90%;
+      height: 40px;
+      font-size: 15px;
+      padding-left: 10px;
+      padding-right: 10px; }
+      .register-container .credential .register-credential::-webkit-input-placeholder {
+        font-weight: 300; }
+      .register-container .credential .register-credential:-moz-placeholder {
+        font-weight: 300; }
+      .register-container .credential .register-credential::-moz-placeholder {
+        font-weight: 300; }
+      .register-container .credential .register-credential:-ms-input-placeholder {
+        font-weight: 300; }
+      .register-container .credential .register-credential:focus {
+        outline: none;
+        border: solid 1px #c21a00; }
+
+.options-container {
+  position: relative;
+  width: 380px;
+  min-width: 380px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 12px; }
+  .options-container a {
+    text-decoration: none !important;
+    color: gray; }
+    .options-container a:visited {
+      color: gray; }
+    .options-container a:hover {
+      color: black; }
+  .options-container .login-link {
+    float: left; }
+  .options-container .forgot-password-link {
+    float: right; }
 
 /*# sourceMappingURL=register.css.map */

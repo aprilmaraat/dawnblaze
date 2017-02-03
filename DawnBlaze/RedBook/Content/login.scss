@@ -1,8 +1,16 @@
 @import "generic.scss";
 
-.login-container{
+.login-content-container{
 	@extend .center-position;
 	position: absolute;
+	width: 380px;
+	min-width: 380px;
+	height: 330px;
+}
+
+.login-container{
+	@extend .center-position;
+	position: relative;
 	width: 380px;
 	min-width: 380px;
 	height: 300px;
@@ -11,12 +19,14 @@
 	border: solid 1px $main_border_color;
 
 	& .login-label{
-		width: 100%;
+		@extend .center-position;
+		width: 90%;
 		height: 75px;
 		text-align: center;
 		line-height: 75px;
 		color: $theme_color;
 		font-size: 20px;
+		border-bottom: solid 1px $main_border_color;
 	}
 
 	& .login-button-container{
@@ -126,10 +136,9 @@
 	height: 30px;
 	line-height: 30px;
 	text-align: center;
-	margin-top: 600px;
 	font-size: 12px;
 
-	a{
+	& a{
 		text-decoration: none !important;
 		color: gray;
 
@@ -151,4 +160,4 @@
 		float: right;
 	}
 
-}
+} // .options-container{

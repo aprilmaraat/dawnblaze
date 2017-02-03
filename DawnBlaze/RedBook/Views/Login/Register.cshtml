@@ -1,6 +1,38 @@
 ﻿@using System.Web.Optimization;
 @Styles.Render("~/Content/register")
 
-<div class="register-container">
+@{
+    ViewBag.Title = "REDBOOK - Sign up";
+}
+
+<div class="register-content-container">
+
+    <div class="register-container">
+        <div class="register-label">Sign up on REDBOOK</div>
+
+        <div class="credential">
+            <div class="credential-label">USERNAME</div>
+			<input id="username" class="register-credential" type="text">
+		</div>
+
+        <div class="credential">
+            <div class="credential-label">EMAIL</div>
+			<input id="email" class="register-credential" type="text">
+		</div>
+
+        <div class="credential">
+            <div class="credential-label">PASSWORD</div>
+			<input id="password" class="register-credential" type="password">
+		</div>
+
+        <div class="register-button-container">
+			<div class="register-button">REGISTER</div>
+		</div>
+    </div>
+
+    <div class="options-container">
+        <a class="login-link" href="@Url.Action("Index", "Login")">Sign in</a>
+        <a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Login")">Forgot password</a>
+    </div>
 
 </div>

@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 body {
+  position: relative;
   margin: 0;
   overflow: auto;
   font-family: "Raleway", serif;
@@ -12,7 +13,7 @@ body {
 .hidden {
   display: none; }
 
-.center-position, .loader-container .loader, .login-container, .login-container .login-button-container > .login-button, .login-container .credential-error, .login-container > .credential .login-credential, .options-container {
+.center-position, .loader-container .loader, .login-content-container, .login-container, .login-container .login-label, .login-container .login-button-container > .login-button, .login-container .credential-error, .login-container > .credential .login-credential, .options-container {
   margin: auto;
   top: 0;
   left: 0;
@@ -135,8 +136,14 @@ body {
   100% {
     -moz-transform: scale(1);
     transform: scale(1); } }
-.login-container {
+.login-content-container {
   position: absolute;
+  width: 380px;
+  min-width: 380px;
+  height: 330px; }
+
+.login-container {
+  position: relative;
   width: 380px;
   min-width: 380px;
   height: 300px;
@@ -144,12 +151,13 @@ body {
   color: #c21a00;
   border: solid 1px #e6e6e6; }
   .login-container .login-label {
-    width: 100%;
+    width: 90%;
     height: 75px;
     text-align: center;
     line-height: 75px;
     color: #c21a00;
-    font-size: 20px; }
+    font-size: 20px;
+    border-bottom: solid 1px #e6e6e6; }
   .login-container .login-button-container {
     position: absolute;
     width: 100%;
@@ -220,7 +228,6 @@ body {
   height: 30px;
   line-height: 30px;
   text-align: center;
-  margin-top: 600px;
   font-size: 12px; }
   .options-container a {
     text-decoration: none !important;
