@@ -1,2 +1,2 @@
-﻿<%@ Application Inherits="Membership.MvcApplication" %>
+﻿<%@ Application Inherits="RedBook.MvcApplication" %>
 

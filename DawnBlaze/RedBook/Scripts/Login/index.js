@@ -19,39 +19,49 @@ var login_object = function(){
             var username = $('#username').val();
             var password = $('#password').val();
 
-            var login = {
-                'Username': username,
-                'Password': password
-            };
+            if(username != "" && username != undefined && 
+                password != "" && password != undefined){
+                
+                var login = {
+                    'Username': username,
+                    'Password': password
+                };
 
-            var formData = new FormData();
-            formData.append('login', login);
+                var formData = new FormData();
+                formData.append('login', login);
 
-            $.ajax({
-                url: 'Login/ValidateCredentials',
-                data: login,
-                type: 'POST',
-                async: true,
-                cache: false,
-                success: function(data) {
-                    // Success Code
+                $.ajax({
+                    url: 'Login/ValidateCredentials',
+                    data: login,
+                    type: 'POST',
+                    async: true,
+                    cache: false,
+                    success: function(data) {
+                        // Success Code
 
-                    if(data == true){
-                        window.location.href = '/Home';
+                        if(data == true){
+                            window.location.href = '/Home';
+                            
+                        }
+                        else{
+                            isLoginError(true);
+                        }
+
+                        layout_object.toggleLoading();
+
+                    },
+                    error: function() {
+                        // Error Code
+                        alert('Error');
                         layout_object.toggleLoading();
                     }
-                    else{
-                        isLoginError(true);
-                        layout_object.toggleLoading();
-                    }
+                });
 
-                },
-                error: function() {
-                    // Error Code
-                    alert('Error');
-                    layout_object.toggleLoading();
-                }
-            });
+            }
+            else{
+                isLoginError(true);
+                layout_object.toggleLoading();
+            }
 
         });
     }

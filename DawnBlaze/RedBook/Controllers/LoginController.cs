@@ -13,27 +13,12 @@ namespace RedBook.Controllers
 {
 	public class LoginController : Controller
 	{
-//		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
+		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
 		private readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
 
 		public ActionResult Index ()
 		{
 			return View();
-		}
-
-		public JsonResult Register()
-		{
-			var creationResult = _membershipProvider.CreateUser (new Guid(), "aj", "dawnblaze@gmail.com");
-
-			return Json (creationResult, JsonRequestBehavior.AllowGet);
-		}
-
-		public ActionResult Logout()
-		{
-			FormsAuthentication.SignOut();
-			Session.Clear();
-			Session.RemoveAll();
-			return RedirectToAction("Index", "Home");
 		}
 
 		[HttpPost]
@@ -46,6 +31,32 @@ namespace RedBook.Controllers
 			}
 
 			return Json (validationResult);
+		}
+
+		[AllowAnonymous]
+		public ActionResult Register(){
+			return View ();
+		}
+
+		[HttpPost]
+		public JsonResult RegisterJson()
+		{
+			var creationResult = _membershipProvider.CreateUser (new Guid(), "aj", "dawnblaze@gmail.com");
+
+			return Json (creationResult, JsonRequestBehavior.AllowGet);
+		}
+
+		[AllowAnonymous]
+		public ActionResult ForgotPassword(){
+			return View ();
+		}
+
+		public ActionResult Logout()
+		{
+			FormsAuthentication.SignOut();
+			Session.Clear();
+			Session.RemoveAll();
+			return RedirectToAction("Index", "Login");
 		}
 
 	}

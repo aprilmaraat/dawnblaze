@@ -127,10 +127,11 @@
 	line-height: 30px;
 	text-align: center;
 	margin-top: 600px;
-	color: gray;
+	font-size: 12px;
 
 	a{
 		text-decoration: none !important;
+		color: gray;
 
 		&:visited{
 			color: gray;

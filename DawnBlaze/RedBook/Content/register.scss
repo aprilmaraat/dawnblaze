@@ -1,0 +1,12 @@
+@import "generic.scss";
+
+.register-container{
+    @extend .center-position;
+	position: absolute;
+	width: 380px;
+	min-width: 380px;
+	height: 300px;
+	background-color: white;
+	color: $theme_color;
+	border: solid 1px $main_border_color;
+}
