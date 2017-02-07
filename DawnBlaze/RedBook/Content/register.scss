@@ -6,7 +6,7 @@
 	width: 380px;
 	min-width: 380px;
 	// height: 430px;
-    height: 415px;
+    height: 490px;
 }
 
 .register-container{
@@ -14,8 +14,7 @@
     position: relative;
 	width: 380px;
 	min-width: 380px;
-    height: 400px;
-	height: 385px;
+	height: 460px;
 	background-color: white;
 	color: $theme_color;
 	border: solid 1px $main_border_color;
@@ -75,6 +74,43 @@
             height: 17px;
             font-size: 10px;
             line-height: 17px;
+            color: black;
+        }
+
+        & .credential-error{
+            @extend .center-position;
+            position: relative;
+            width: 150px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: red;
+            text-align: center;
+            line-height: 40px;
+            margin-right: -150px;
+            color: white;
+
+            &:before{
+                content: "";
+                width: 0;
+                height: 0;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid transparent;
+                border-right: 8px solid red;
+                position: absolute;
+                top: 30%;
+                left: -15px;
+            }
+
+        } // & .credential-error{
+
+		& .password-match-error{
+			width: 200px;
+			margin-right: -200px;
+		}
+
+        & .input-error{
+            border: solid 1px red;
         }
 
         & .register-credential{
@@ -107,9 +143,9 @@
 				border: solid 1px $theme_color;
 			}
 
-        }
+        } // & .register-credential{
 
-    }
+    } // & .credential{
 
 } // .register-container{
 

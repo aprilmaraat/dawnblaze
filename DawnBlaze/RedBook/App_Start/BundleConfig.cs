@@ -19,6 +19,9 @@ namespace RedBook.App_Start
 			bundles.Add(new ScriptBundle("~/Scripts/Login/Index").Include(
 				"~/Scripts/Login/index.js"));
 
+			bundles.Add(new ScriptBundle("~/Scripts/Login/Register").Include(
+				"~/Scripts/Login/register.js"));
+
 			// CSS
 
 			bundles.Add(new StyleBundle("~/Content/layout").Include(

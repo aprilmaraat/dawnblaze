@@ -13,9 +13,10 @@ namespace RedBook.Controllers
 {
 	public class LoginController : Controller
 	{
-		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
+//		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
 		private readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
 
+		[AllowAnonymous]
 		public ActionResult Index ()
 		{
 			return View();
@@ -24,10 +25,10 @@ namespace RedBook.Controllers
 		[HttpPost]
 		public JsonResult ValidateCredentials(Login login)
 		{
-			var validationResult = _membershipProvider.ValidateUser(login.Username, login.Password);
+			var validationResult = _membershipProvider.ValidateUser (login.Username, login.Password);
 
-			if(validationResult){
-				FormsAuthentication.SetAuthCookie(login.Username, false);
+			if (validationResult) {
+				FormsAuthentication.SetAuthCookie (login.Username, false);
 			}
 
 			return Json (validationResult);
@@ -39,9 +40,9 @@ namespace RedBook.Controllers
 		}
 
 		[HttpPost]
-		public JsonResult RegisterJson()
+		public JsonResult RegisterJson(Register register)
 		{
-			var creationResult = _membershipProvider.CreateUser (new Guid(), "aj", "dawnblaze@gmail.com");
+			var creationResult = _membershipProvider.CreateUser (register.Username, register.Password, register.Email);
 
 			return Json (creationResult, JsonRequestBehavior.AllowGet);
 		}

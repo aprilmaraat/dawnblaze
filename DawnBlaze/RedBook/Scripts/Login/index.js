@@ -41,18 +41,16 @@ var login_object = function(){
 
                         if(data == true){
                             window.location.href = '/Home';
-                            
                         }
                         else{
                             isLoginError(true);
+                            layout_object.toggleLoading();
                         }
-
-                        layout_object.toggleLoading();
 
                     },
                     error: function() {
                         // Error Code
-                        alert('Error');
+                        alert('Error. Unable to connect to server. Try again later.');
                         layout_object.toggleLoading();
                     }
                 });

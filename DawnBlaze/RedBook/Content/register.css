@@ -13,7 +13,7 @@ body {
 .hidden {
   display: none; }
 
-.center-position, .loader-container .loader, .register-content-container, .register-container, .register-container .register-label, .register-container .register-button-container > .register-button, .register-container .credential .credential-label, .register-container .credential .register-credential, .options-container {
+.center-position, .loader-container .loader, .register-content-container, .register-container, .register-container .register-label, .register-container .register-button-container > .register-button, .register-container .credential .credential-label, .register-container .credential .credential-error, .register-container .credential .register-credential, .options-container {
   margin: auto;
   top: 0;
   left: 0;
@@ -140,14 +140,13 @@ body {
   position: absolute;
   width: 380px;
   min-width: 380px;
-  height: 415px; }
+  height: 490px; }
 
 .register-container {
   position: relative;
   width: 380px;
   min-width: 380px;
-  height: 400px;
-  height: 385px;
+  height: 460px;
   background-color: white;
   color: #c21a00;
   border: solid 1px #e6e6e6; }
@@ -188,7 +187,34 @@ body {
       width: 90%;
       height: 17px;
       font-size: 10px;
-      line-height: 17px; }
+      line-height: 17px;
+      color: black; }
+    .register-container .credential .credential-error {
+      position: relative;
+      width: 150px;
+      height: 40px;
+      border-radius: 4px;
+      background-color: red;
+      text-align: center;
+      line-height: 40px;
+      margin-right: -150px;
+      color: white; }
+      .register-container .credential .credential-error:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-right: 8px solid red;
+        position: absolute;
+        top: 30%;
+        left: -15px; }
+    .register-container .credential .password-match-error {
+      width: 200px;
+      margin-right: -200px; }
+    .register-container .credential .input-error {
+      border: solid 1px red; }
     .register-container .credential .register-credential {
       position: absolute;
       width: 90%;

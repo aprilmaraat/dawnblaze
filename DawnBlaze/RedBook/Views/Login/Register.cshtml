@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization;
 @Styles.Render("~/Content/register")
+@Scripts.Render("~/Scripts/Login/Register")
 
 @{
     ViewBag.Title = "REDBOOK - Sign up";
@@ -8,21 +9,38 @@
 <div class="register-content-container">
 
     <div class="register-container">
-        <div class="register-label">Sign up on REDBOOK</div>
+        <div class="register-label">CREATE ACCOUNT</div>
 
         <div class="credential">
             <div class="credential-label">USERNAME</div>
 			<input id="username" class="register-credential" type="text">
+            <div class="credential-error hidden">
+                This field is invalid!
+            </div>
 		</div>
 
         <div class="credential">
             <div class="credential-label">EMAIL</div>
 			<input id="email" class="register-credential" type="text">
+            <div class="credential-error hidden">
+                This field is invalid!
+            </div>
 		</div>
 
         <div class="credential">
             <div class="credential-label">PASSWORD</div>
 			<input id="password" class="register-credential" type="password">
+            <div class="credential-error hidden">
+                This field is invalid!
+            </div>
+		</div>
+
+        <div class="credential">
+            <div class="credential-label">CONFIRM PASSWORD</div>
+            <input id="password-confirm" class="register-credential" type="password">           
+            <div class="credential-error password-match-error hidden">
+                Password did not match!
+            </div>
 		</div>
 
         <div class="register-button-container">
@@ -32,7 +50,6 @@
 
     <div class="options-container">
         <a class="login-link" href="@Url.Action("Index", "Login")">Sign in</a>
-        <a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Login")">Forgot password</a>
     </div>
 
 </div>

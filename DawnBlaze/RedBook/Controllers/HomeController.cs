@@ -12,13 +12,15 @@ namespace RedBook.Controllers
 		public ActionResult Index ()
 		{
 			if (HttpContext.User.Identity.IsAuthenticated) {
+				
 				return View ();
-			} 
-			else 
-			{
-				return RedirectToAction ("Index", "Login");
-			}
 
+			} 
+			else {
+				
+				return RedirectToAction("Index", "Login");
+
+			}
 		}
 	}
 }

@@ -37,13 +37,12 @@ namespace Membership.DataAccess
 			return _unitOfWork.UserRepository.GetOne(user => (user.UserName == userName.Trim()) && (user.PasswordString == password));
 		}
 
-		public bool CreateUser(Guid userId, string userName, string email)
+		public bool CreateUser(string username, string password, string email)
 		{
 			var newUser = new User
 			{
-				UserId = userId.ToString(),
-				UserName = userName,
-				PasswordString = PasswordRepository.GetPassword(userName).ToString(),
+				UserName = username,
+				PasswordString = PasswordRepository.GetPassword(password).ToString(),
 				Email = email
 			};
 			try
