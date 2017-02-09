@@ -21,7 +21,7 @@ var login_object = function(){
 
             if(username != "" && username != undefined && 
                 password != "" && password != undefined){
-                
+
                 var login = {
                     'Username': username,
                     'Password': password
@@ -63,8 +63,6 @@ var login_object = function(){
 
         });
     }
-
-    
 
     function isLoginError(bool){
         var credential_error = $('.credential-error');

@@ -17,7 +17,14 @@ var register_object = function(){
             var username_element = $('#username');
             var email_element = $('#email');
             var password_element = $('#password');
-            // var password_confirm_element = $('#password-confirm');
+            var password_confirm_element = $('#password-confirm');
+
+            var register = {
+                'Username': username_element.val(),
+                'Password': password_element.val(),
+                'ConfirmAddress': password_confirm_element.val(),
+                'Email': email_element.val()
+            };
 
             // if(username_element.val() == '' || username_element.val() == undefined){
             //     registerCredentialError('username', true);
@@ -40,7 +47,26 @@ var register_object = function(){
             //     registerCredentialError('password', false);
             // }
 
-            
+            $.ajax({
+                // url: 'Login/RegisterJson',
+                url: 'RegisterJson',
+                data: register,
+                type: 'POST',
+                async: true,
+                cache: false,
+                success: function(data) {
+                    // Success Code
+
+                    // alert(JSON.stringify(data.error));
+
+                    alert(JSON.stringify(data));
+
+                },
+                error: function() {
+                    // Error Code
+                    alert('Error. Unable to connect to server. Try again later.');
+                }
+            });
             
             layout_object.toggleLoading();
 

@@ -13,13 +13,17 @@ namespace RedBook.Controllers
 {
 	public class LoginController : Controller
 	{
-//		private readonly UnitOfWork _membershipUnitOfWork = new UnitOfWork();
 		private readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
 
 		[AllowAnonymous]
 		public ActionResult Index ()
 		{
-			return View();
+			if (HttpContext.User.Identity.IsAuthenticated) {
+				return RedirectToAction ("Logout", "Login");
+			} 
+			else {
+				return View();
+			}
 		}
 
 		[HttpPost]
@@ -42,9 +46,22 @@ namespace RedBook.Controllers
 		[HttpPost]
 		public JsonResult RegisterJson(Register register)
 		{
-			var creationResult = _membershipProvider.CreateUser (register.Username, register.Password, register.Email);
+//			if (!ModelState.IsValid) {
+//				return Json (new { isSuccess = false, error = GetErrorsFromModelState () });
+//			} 
+//			else {
+//				if (register.ConfirmPassword != register.Password) {
+//					return Json (new { isSuccess = false, error = { "Confirm Password did not match." } });
+//				} 
+//				else {
+//					var creationResult = _membershipProvider.CreateUser (register.Username, register.Password, register.Email);
+//
+//					return Json (new { isSuccess = creationResult });
+//				}
+//			}
 
-			return Json (creationResult, JsonRequestBehavior.AllowGet);
+			return Json (GetErrorsFromModelState());
+
 		}
 
 		[AllowAnonymous]
@@ -58,6 +75,40 @@ namespace RedBook.Controllers
 			Session.Clear();
 			Session.RemoveAll();
 			return RedirectToAction("Index", "Login");
+		}
+
+		private RegisterModelState GetErrorsFromModelState()
+		{
+//			return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
+			var registerModelState = new RegisterModelState();
+
+			foreach(var key in ModelState.Keys){
+
+				var value = ModelState[key];
+
+				var errorMessage = "";
+
+				foreach (var error in value.Errors) {
+					errorMessage += error.ErrorMessage;
+				}
+
+				if(key == "Username"){
+					registerModelState.Username = errorMessage;
+				}
+				else if(key == "Password"){
+					registerModelState.Password = errorMessage;
+				}
+				else if(key == "Email"){
+					registerModelState.Email = errorMessage;
+				}
+				else if(key == "ConfirmPassword"){
+					registerModelState.ConfirmPassword = errorMessage;
+				}
+
+			}
+
+			return registerModelState;
+
 		}
 
 	}
