@@ -46,19 +46,41 @@ namespace RedBook.Controllers
 		[HttpPost]
 		public JsonResult RegisterJson(Register register)
 		{
-//			if (!ModelState.IsValid) {
-//				return Json (new { isSuccess = false, error = GetErrorsFromModelState () });
-//			} 
-//			else {
-//				if (register.ConfirmPassword != register.Password) {
-//					return Json (new { isSuccess = false, error = { "Confirm Password did not match." } });
-//				} 
-//				else {
-//					var creationResult = _membershipProvider.CreateUser (register.Username, register.Password, register.Email);
-//
-//					return Json (new { isSuccess = creationResult });
-//				}
-//			}
+			var registerModelState = new RegisterModelState ();
+
+			if (!ModelState.IsValid) {
+				registerModelState = GetErrorsFromModelState ();
+
+				if (register.ConfirmPassword != register.Password) {
+					registerModelState.ConfirmPassword = "Confirm Password did not match.";
+				}
+
+				return Json (new { isSuccess = false, error = registerModelState });
+			} 
+			else {
+				if (register.ConfirmPassword != register.Password) {
+					
+//					var registerModelState = new RegisterModelState
+//					{ 
+//						Username = "",
+//						Password = "",
+//						Email = "",
+//						ConfirmPassword = "Confirm Password did not match."
+//					};
+
+					registerModelState.Username = "";
+					registerModelState.Password = "";
+					registerModelState.Email = "";
+					registerModelState.ConfirmPassword = "Confirm Password did not match.";
+
+					return Json (new { isSuccess = false, error = registerModelState });
+				} 
+				else {
+					var creationResult = _membershipProvider.CreateUser (register.Username, register.Password, register.Email);
+
+					return Json (new { isSuccess = creationResult });
+				}
+			}
 
 			return Json (GetErrorsFromModelState());
 

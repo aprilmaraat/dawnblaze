@@ -22,30 +22,9 @@ var register_object = function(){
             var register = {
                 'Username': username_element.val(),
                 'Password': password_element.val(),
-                'ConfirmAddress': password_confirm_element.val(),
+                'ConfirmPassword': password_confirm_element.val(),
                 'Email': email_element.val()
             };
-
-            // if(username_element.val() == '' || username_element.val() == undefined){
-            //     registerCredentialError('username', true);
-            // }
-            // else{
-            //     registerCredentialError('username', false);
-            // }
-
-            // if(email_element.val() == '' || email_element.val() == undefined){
-            //     registerCredentialError('email', true);
-            // }
-            // else{
-            //     registerCredentialError('email', false);
-            // }
-
-            // if(password_element.val() == '' || password_element.val() == undefined){
-            //     registerCredentialError('password', true);
-            // }
-            // else{
-            //     registerCredentialError('password', false);
-            // }
 
             $.ajax({
                 // url: 'Login/RegisterJson',
@@ -57,33 +36,70 @@ var register_object = function(){
                 success: function(data) {
                     // Success Code
 
-                    // alert(JSON.stringify(data.error));
+                    if(data.isSuccess == true){
+                        // Redirect to success registration page and display instruction
+                        // An confirmation link has been sent to you email.
+                        // For now, redirect to Login
+                        alert(data.isSuccess);
+                        // window.location.href = '/Login';
+                    }
+                    else{
 
-                    alert(JSON.stringify(data));
+                        if(data.error.Username != ''){
+                            registerCredentialError('username', true, data.error.Username);
+                        }
+                        else{
+                            registerCredentialError('username', false);
+                        }
+
+                        if(data.error.Password != ''){
+                            registerCredentialError('password', true, data.error.Password);
+                        }
+                        else{
+                            registerCredentialError('password', false);
+                        }
+
+                        if(data.error.Email != ''){
+                            registerCredentialError('email', true, data.error.Email);
+                        }
+                        else{
+                            registerCredentialError('email', false);
+                        }
+
+                        if(data.error.ConfirmPassword != ''){
+                            registerCredentialError('password-confirm', true, data.error.ConfirmPassword);
+                        }
+                        else{
+                            registerCredentialError('password-confirm', false);
+                        }
+
+                        layout_object.toggleLoading();
+                    }
 
                 },
                 error: function() {
                     // Error Code
                     alert('Error. Unable to connect to server. Try again later.');
+                    layout_object.toggleLoading();
                 }
             });
-            
-            layout_object.toggleLoading();
 
         });
     }
 
-    function registerCredentialError(fieldname, isError){
+    function registerCredentialError(fieldname, isError, errorText){
 
         switch(fieldname) {
             case 'username':
                 
                 if(isError){
                     $('#username').addClass('input-error');
+                    $('#username').parent().find('.credential-error').find('.error-message').text(errorText);
                     $('#username').parent().find('.credential-error').removeClass('hidden');
                 }
                 else{
                     $('#username').removeClass('input-error');
+                    $('#username').parent().find('.credential-error').find('.error-message').text("");
                     $('#username').parent().find('.credential-error').addClass('hidden');
                 }
 
@@ -92,10 +108,12 @@ var register_object = function(){
                 
                 if(isError){
                     $('#email').addClass('input-error');
+                    $('#email').parent().find('.credential-error').find('.error-message').text(errorText);
                     $('#email').parent().find('.credential-error').removeClass('hidden');
                 }
                 else{
                     $('#email').removeClass('input-error');
+                    $('#email').parent().find('.credential-error').find('.error-message').text("");
                     $('#email').parent().find('.credential-error').addClass('hidden');
                 }
 
@@ -104,11 +122,27 @@ var register_object = function(){
                 
                 if(isError){
                     $('#password').addClass('input-error');
+                    $('#password').parent().find('.credential-error').find('.error-message').text(errorText);
                     $('#password').parent().find('.credential-error').removeClass('hidden');
                 }
                 else{
                     $('#password').removeClass('input-error');
+                    $('#password').parent().find('.credential-error').find('.error-message').text("");
                     $('#password').parent().find('.credential-error').addClass('hidden');
+                }
+
+                break;
+            case 'password-confirm':
+
+                if(isError){
+                    $('#password-confirm').addClass('input-error');
+                    $('#password-confirm').parent().find('.credential-error').find('.error-message').text(errorText);
+                    $('#password-confirm').parent().find('.credential-error').removeClass('hidden');
+                }
+                else{
+                    $('#password-confirm').removeClass('input-error');
+                    $('#password-confirm').parent().find('.credential-error').find('.error-message').text("");
+                    $('#password-confirm').parent().find('.credential-error').addClass('hidden');
                 }
 
                 break;

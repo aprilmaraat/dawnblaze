@@ -11,7 +11,7 @@ body {
   height: 50px; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .center-position, .loader-container .loader, .login-content-container, .login-container, .login-container .login-label, .login-container .login-button-container > .login-button, .login-container .credential-error, .login-container > .credential .login-credential, .options-container {
   margin: auto;

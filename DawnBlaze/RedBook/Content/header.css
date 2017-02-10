@@ -11,7 +11,7 @@ body {
   height: 50px; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .center-position, .loader-container .loader, .header-panel > .header-button-container, .header-panel > .header-button-container > .header-button-left > .search-panel, .header-panel > .header-button-container > .header-button-right > .header-button, .header-panel > .header-button-container > .header-button-right > .notification-number {
   margin: auto;

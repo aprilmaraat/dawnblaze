@@ -12,7 +12,7 @@ namespace RedBook
 		[EmailAddress(ErrorMessage = "Invalid Email Address")]
 		public string Email { get; set; }
 
-		[Required(ErrorMessage = "Email is required.")]
+		[Required(ErrorMessage = "Password is required.")]
 		public string Password { get; set; }
 
 		[Required(ErrorMessage = "Confirm Password must not be empty.")]

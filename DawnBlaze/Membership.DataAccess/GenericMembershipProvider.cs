@@ -43,7 +43,10 @@ namespace Membership.DataAccess
 			{
 				UserName = username,
 				PasswordString = PasswordRepository.GetPassword(password).ToString(),
-				Email = email
+				Email = email,
+				IsConfirmed = 0,
+				LoginAttempts = 0,
+				IsLockedOut = 0
 			};
 			try
 			{

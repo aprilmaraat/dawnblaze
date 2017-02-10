@@ -11,7 +11,7 @@ body {
   height: 50px; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .center-position, .loader-container .loader {
   margin: auto;

@@ -80,14 +80,26 @@
         & .credential-error{
             @extend .center-position;
             position: relative;
-            width: 150px;
+			width: auto;
             height: 40px;
             border-radius: 4px;
             background-color: red;
-            text-align: center;
+            text-align: left;
             line-height: 40px;
-            margin-right: -150px;
             color: white;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-left: 380px;
+
+			display: inline-block;
+			white-space: nowrap;
+
+			& .error-message{
+				@extend .center-position;
+            	position: relative;
+    			overflow: hidden;
+				float: left;
+			}
 
             &:before{
                 content: "";
@@ -99,7 +111,7 @@
                 border-right: 8px solid red;
                 position: absolute;
                 top: 30%;
-                left: -15px;
+                left: -16px;
             }
 
         } // & .credential-error{
