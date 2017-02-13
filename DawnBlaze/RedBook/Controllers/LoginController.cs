@@ -50,7 +50,7 @@ namespace RedBook.Controllers
 			var registerModelState = new RegisterModelState ();
 
 			if (!ModelState.IsValid) {
-				registerModelState = GetErrorsFromModelState ();
+				registerModelState = GetErrorsFromRegisterModelState ();
 
 				if (register.ConfirmPassword != register.Password) {
 					registerModelState.ConfirmPassword = "Confirm password did not match.";
@@ -65,8 +65,10 @@ namespace RedBook.Controllers
 				registerModelState.Email = "";
 				registerModelState.ConfirmPassword = "";
 
-				var userExist = _unitOfWork.UserRepository.GetList (u => u.UserName == register.Username).Select (u => u.UserName).Count () >= 1;
-				var emailExist = _unitOfWork.UserRepository.GetList (u => u.Email == register.Email).Select (u => u.UserName).Count () >= 1;
+//				var userExist = _unitOfWork.UserRepository.GetList (q => q.UserName == register.Username).Select (q => q.UserName).Count () >= 1;
+//				var emailExist = _unitOfWork.UserRepository.GetList (q => q.Email == register.Email).Select (q => q.UserName).Count () >= 1;
+				var userExist = _unitOfWork.UserRepository.GetOne (q => q.UserName == register.Username) != null;
+				var emailExist = _unitOfWork.UserRepository.GetOne (q => q.Email == register.Email) != null;
 				var passwordMinimumLength = register.Password.Length >= 8;
 
 				if (userExist || emailExist || passwordMinimumLength == false || register.ConfirmPassword != register.Password) {
@@ -106,7 +108,21 @@ namespace RedBook.Controllers
 
 		public JsonResult ForgotPasswordJson(ForgotPassword forgotPassword){
 
+			var forgotPasswordModelState = new ForgotPasswordModelState ();
 
+			if (!ModelState.IsValid) {
+				forgotPasswordModelState = GetErrorsFromForgotPasswordModelState ();
+
+				return Json (new { isSuccess = false, error =  forgotPasswordModelState });
+			} 
+			else {
+				if (_unitOfWork.UserRepository.GetOne (q => q.UserName == forgotPassword.Username && q.Email == forgotPassword.Email) != null) {
+					return Json (new { isSuccess = true });
+				}
+				else {
+					return Json (new { isSuccess = false });
+				}
+			}
 
 		}
 
@@ -118,7 +134,7 @@ namespace RedBook.Controllers
 			return RedirectToAction("Index", "Login");
 		}
 
-		private RegisterModelState GetErrorsFromModelState()
+		private RegisterModelState GetErrorsFromRegisterModelState()
 		{
 //			return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
 			var registerModelState = new RegisterModelState();
@@ -149,6 +165,33 @@ namespace RedBook.Controllers
 			}
 
 			return registerModelState;
+
+		}
+
+		private ForgotPasswordModelState GetErrorsFromForgotPasswordModelState()
+		{
+			var forgotPasswordModelState = new ForgotPasswordModelState();
+
+			foreach(var key in ModelState.Keys){
+
+				var value = ModelState[key];
+
+				var errorMessage = "";
+
+				foreach (var error in value.Errors) {
+					errorMessage += error.ErrorMessage;
+				}
+
+				if(key == "Username"){
+					forgotPasswordModelState.Username = errorMessage;
+				}
+				else if(key == "Email"){
+					forgotPasswordModelState.Email = errorMessage;
+				}
+
+			}
+
+			return forgotPasswordModelState;
 
 		}
 

@@ -36,7 +36,7 @@ var register_object = function(){
                 success: function(data) {
                     // Success Code
 
-                    if(data.isSuccess == true){
+                    if(data.isSuccess){
                         // Redirect to success registration page and display instruction
                         // An confirmation link has been sent to you email.
                         // For now, redirect to Login
@@ -152,8 +152,6 @@ var register_object = function(){
                     $('#password-confirm').parent().find('.credential-error').addClass('hidden');
                 }
 
-                break;
-            default:
                 break;
         }
 
