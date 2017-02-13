@@ -13,6 +13,7 @@ namespace RedBook.Controllers
 {
 	public class LoginController : Controller
 	{
+		private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 		private readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
 
 		[AllowAnonymous]
@@ -52,26 +53,39 @@ namespace RedBook.Controllers
 				registerModelState = GetErrorsFromModelState ();
 
 				if (register.ConfirmPassword != register.Password) {
-					registerModelState.ConfirmPassword = "Confirm Password did not match.";
+					registerModelState.ConfirmPassword = "Confirm password did not match.";
 				}
 
 				return Json (new { isSuccess = false, error = registerModelState });
 			} 
 			else {
-				if (register.ConfirmPassword != register.Password) {
-					
-//					var registerModelState = new RegisterModelState
-//					{ 
-//						Username = "",
-//						Password = "",
-//						Email = "",
-//						ConfirmPassword = "Confirm Password did not match."
-//					};
 
-					registerModelState.Username = "";
-					registerModelState.Password = "";
-					registerModelState.Email = "";
-					registerModelState.ConfirmPassword = "Confirm Password did not match.";
+				registerModelState.Username = "";
+				registerModelState.Password = "";
+				registerModelState.Email = "";
+				registerModelState.ConfirmPassword = "";
+
+				var userExist = _unitOfWork.UserRepository.GetList (u => u.UserName == register.Username).Select (u => u.UserName).Count () >= 1;
+				var emailExist = _unitOfWork.UserRepository.GetList (u => u.Email == register.Email).Select (u => u.UserName).Count () >= 1;
+				var passwordMinimumLength = register.Password.Length >= 8;
+
+				if (userExist || emailExist || passwordMinimumLength == false || register.ConfirmPassword != register.Password) {
+
+					if(userExist){
+						registerModelState.Username = "Username already exist.";
+					}
+
+					if(emailExist){
+						registerModelState.Email = "Email already exist.";
+					}
+
+					if(passwordMinimumLength == false){
+						registerModelState.Password = "Password must be at least 8 characters long.";
+					}
+
+					if (register.ConfirmPassword != register.Password) {
+						registerModelState.ConfirmPassword = "Confirm Password did not match.";
+					}
 
 					return Json (new { isSuccess = false, error = registerModelState });
 				} 
@@ -80,15 +94,20 @@ namespace RedBook.Controllers
 
 					return Json (new { isSuccess = creationResult });
 				}
-			}
 
-			return Json (GetErrorsFromModelState());
+			}
 
 		}
 
 		[AllowAnonymous]
 		public ActionResult ForgotPassword(){
 			return View ();
+		}
+
+		public JsonResult ForgotPasswordJson(ForgotPassword forgotPassword){
+
+
+
 		}
 
 		public ActionResult Logout()

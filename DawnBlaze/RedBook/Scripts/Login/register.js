@@ -40,37 +40,44 @@ var register_object = function(){
                         // Redirect to success registration page and display instruction
                         // An confirmation link has been sent to you email.
                         // For now, redirect to Login
-                        alert(data.isSuccess);
-                        // window.location.href = '/Login';
+                        alert("Successfully created account.");
+                        window.location.href = '/Login';
                     }
                     else{
 
-                        if(data.error.Username != ''){
-                            registerCredentialError('username', true, data.error.Username);
-                        }
-                        else{
-                            registerCredentialError('username', false);
-                        }
+                        if(data.error != undefined){
 
-                        if(data.error.Password != ''){
-                            registerCredentialError('password', true, data.error.Password);
-                        }
-                        else{
-                            registerCredentialError('password', false);
-                        }
+                            if(data.error.Username != ''){
+                                registerCredentialError('username', true, data.error.Username);
+                            }
+                            else{
+                                registerCredentialError('username', false);
+                            }
 
-                        if(data.error.Email != ''){
-                            registerCredentialError('email', true, data.error.Email);
-                        }
-                        else{
-                            registerCredentialError('email', false);
-                        }
+                            if(data.error.Password != ''){
+                                registerCredentialError('password', true, data.error.Password);
+                            }
+                            else{
+                                registerCredentialError('password', false);
+                            }
 
-                        if(data.error.ConfirmPassword != ''){
-                            registerCredentialError('password-confirm', true, data.error.ConfirmPassword);
+                            if(data.error.Email != ''){
+                                registerCredentialError('email', true, data.error.Email);
+                            }
+                            else{
+                                registerCredentialError('email', false);
+                            }
+
+                            if(data.error.ConfirmPassword != ''){
+                                registerCredentialError('password-confirm', true, data.error.ConfirmPassword);
+                            }
+                            else{
+                                registerCredentialError('password-confirm', false);
+                            }
+
                         }
                         else{
-                            registerCredentialError('password-confirm', false);
+                            alert('Error. Unable to create account.');
                         }
 
                         layout_object.toggleLoading();

@@ -1,5 +1,5 @@
 ﻿@using System.Web.Optimization;
-@Styles.Render("~/Content/register")
+@Styles.Render("~/Content/Register")
 @Scripts.Render("~/Scripts/Login/Register")
 
 @{
@@ -54,6 +54,7 @@
 
     <div class="options-container">
         <a class="login-link" href="@Url.Action("Index", "Login")">Sign in</a>
+        <a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Login")">Forgot Password</a>
     </div>
 
 </div>

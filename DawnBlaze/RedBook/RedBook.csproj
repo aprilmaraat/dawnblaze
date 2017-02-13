@@ -109,6 +109,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\RegisterModelState.cs" />
+    <Compile Include="Models\ForgotPassword.cs" />
+    <Compile Include="Models\ForgotPasswordModelState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

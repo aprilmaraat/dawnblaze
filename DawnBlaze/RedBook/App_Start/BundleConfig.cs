@@ -22,22 +22,28 @@ namespace RedBook.App_Start
 			bundles.Add(new ScriptBundle("~/Scripts/Login/Register").Include(
 				"~/Scripts/Login/register.js"));
 
+			bundles.Add(new ScriptBundle("~/Scripts/Login/Forgot-Password").Include(
+				"~/Scripts/Login/forgot-password.js"));
+
 			// CSS
 
-			bundles.Add(new StyleBundle("~/Content/layout").Include(
+			bundles.Add(new StyleBundle("~/Content/Layout").Include(
 				"~/Content/layout.css"));
 
-			bundles.Add(new StyleBundle("~/Content/header").Include(
+			bundles.Add(new StyleBundle("~/Content/Header").Include(
 				"~/Content/header.css"));
 
-			bundles.Add (new StyleBundle("~/Content/home").Include(
+			bundles.Add (new StyleBundle("~/Content/Home").Include(
 				"~/Content/home.css"));
 
-			bundles.Add (new StyleBundle("~/Content/login").Include(
+			bundles.Add (new StyleBundle("~/Content/Login").Include(
 				"~/Content/login.css"));
 
-			bundles.Add (new StyleBundle("~/Content/register").Include(
+			bundles.Add (new StyleBundle("~/Content/Register").Include(
 				"~/Content/register.css"));
+
+			bundles.Add (new StyleBundle("~/Content/Forgot-Password").Include(
+				"~/Content/forgot-password.css"));
 
 			BundleTable.EnableOptimizations = true;
 

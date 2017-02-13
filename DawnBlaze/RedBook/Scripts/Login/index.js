@@ -41,6 +41,7 @@ var login_object = function(){
 
                         if(data == true){
                             window.location.href = '/Home';
+                            // location.replace("/Home");
                         }
                         else{
                             isLoginError(true);

@@ -51,6 +51,9 @@ namespace Membership.DataAccess
 			try
 			{
 				_unitOfWork.UserRepository.Insert(newUser);
+
+				// Send email confirmation here
+
 				return true;
 			}
 			catch
