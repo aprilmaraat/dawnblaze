@@ -31,7 +31,7 @@ var login_object = function(){
                 formData.append('login', login);
 
                 $.ajax({
-                    url: 'Login/ValidateCredentials',
+                    url: 'Account/Login',
                     data: login,
                     type: 'POST',
                     async: true,

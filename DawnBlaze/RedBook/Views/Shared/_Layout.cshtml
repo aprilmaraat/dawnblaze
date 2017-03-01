@@ -17,13 +17,19 @@
 
         <div class="page-cover"></div>
     </div>
-
-	@Html.Partial("_Navigation")
+    
+    @Html.Partial("_Navigation")
 
 	<div class='content-panel'>
-      <div class='content-container'>
-      	@RenderBody()
-      </div>
+
+        @if (Request.IsAuthenticated)
+        {
+	        <div class="display-cheat"></div>
+        }
+
+        <div class='content-container'>
+            @RenderBody()
+        </div>
     </div>
 
     @Html.Partial("_ActivityPanel")

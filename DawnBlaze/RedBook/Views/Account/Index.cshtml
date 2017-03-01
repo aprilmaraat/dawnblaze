@@ -3,13 +3,13 @@
 @Scripts.Render("~/Scripts/Login/Index")
 
 @{
-    ViewBag.Title = "REDBOOK - Sign in";
+    ViewBag.Title = "MUKHANG LIBRO - Sign in";
 }
 
 <div class="login-content-container">
 
 	<div class="login-container">
-		<div class="login-label">REDBOOK</div>
+		<div class="login-label">MUKHANG LIBRO</div>
 
 		<div class="credential-error hidden">
 			Invalid credentials
@@ -29,8 +29,8 @@
 	</div>
 
 	<div class="options-container">
-		<a class="register-link" href="@Url.Action("Register", "Login")">Create an account</a> 
-		<a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Login")">Forgot password</a>
+		<a class="register-link" href="@Url.Action("Register", "Account")">Create an account</a> 
+		<a class="forgot-password-link" href="@Url.Action("ForgotPassword", "Account")">Forgot password</a>
 	</div>
 
 </div>

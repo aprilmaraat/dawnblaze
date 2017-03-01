@@ -41,7 +41,7 @@ var register_object = function(){
                         // An confirmation link has been sent to you email.
                         // For now, redirect to Login
                         alert("Successfully created account.");
-                        window.location.href = '/Login';
+                        window.location.href = '/Account/SuccessRegistration';
                     }
                     else{
 

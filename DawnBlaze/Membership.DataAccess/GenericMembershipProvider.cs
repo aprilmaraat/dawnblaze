@@ -16,7 +16,7 @@ namespace Membership.DataAccess
 
 		public override int MinRequiredPasswordLength
 		{
-			get { return 5; }
+			get { return 8; }
 		}
 
 		public override bool ValidateUser(string userName, string password)

@@ -1,0 +1,52 @@
+@import "generic.scss";
+
+.success-registration-content-container{
+	@extend .center-position;
+	position: absolute;
+	width: 100%;
+	min-width: 380px;
+	height: 500px;
+}
+
+.success-registration-container{
+	@extend .center-position;
+	position: relative;
+	width: 100%;
+	min-width: 380px;
+	height: 500px;
+	background-color: white;
+	color: $theme_color;
+	border: solid 1px $main_border_color;
+
+    & .success-main-text{
+        width: 100%;
+        height: 500px;
+        text-align: center;
+        line-height: 250px;
+        font-size: 4vw;
+        font-weight: bold;
+
+        & .success-sub-text{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1vw;
+            font-weight: bold;
+
+        }
+
+        & .back-link{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 0.7vw;
+            font-weight: bold;
+            color: black;
+
+        }
+
+    }
+
+}

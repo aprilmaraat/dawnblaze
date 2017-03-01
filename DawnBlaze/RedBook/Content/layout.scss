@@ -4,7 +4,8 @@
   width: 100%;
   height: calc(100% - 50px);
   min-width: 400px;
-  margin-top: 50px;
+  // margin-top: 50px;
+  position: relative;
 
   & > .content-container{
     @extend .center-position;

@@ -1,0 +1,27 @@
+@using System.Web.Optimization;
+@Styles.Render("~/Content/SuccessRegistration")
+
+@{
+    ViewBag.Title = "MUKHANG LIBRO - Registration Success";
+}
+
+<div class="success-registration-content-container">
+
+    <div class="success-registration-container">
+
+        <div class="success-main-text">
+            Congratulations
+
+            <div class="success-sub-text">
+                You have successfully registered your account. An email verification message was sent to your email.
+            </div>
+
+            <div class="back-link">
+                Back to <a class="register-link" href="@Url.Action("Index", "Account")">sign in</a> page.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
