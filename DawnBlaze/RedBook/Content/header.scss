@@ -18,15 +18,21 @@
 
     & > .header-button-left{
 
+      & > .redbook-logo{
+        @extend .center-position;
+        position: absolute;
+        margin-left: 10px;
+      }
+
       & > .search-panel{
         @extend .center-position;
         position: absolute;
-        width: 40%;
+        width: 35%;
         height: 30px;
         font-size: 15px;
         padding-left: 10px;
         padding-right: 10px;
-        margin-left: 10px;
+        margin-left: 50px;
 
         &::-webkit-input-placeholder {
           font-weight: 400;

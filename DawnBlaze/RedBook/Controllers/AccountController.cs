@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.Mvc.Ajax;
-using Membership.Data;
 using Membership.DataAccess;
 using RedBook.Models;
+using Owin;
 
 namespace RedBook.Controllers
 {
+	//[RequireHttps]
 	public class AccountController : Controller
 	{
-		private readonly UnitOfWork _unitOfWork = new UnitOfWork();
-		private readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
-
-		//[AllowAnonymous]
-		//public JsonResult Test() { 
-			
-		//}
+		readonly UnitOfWork _unitOfWork = new UnitOfWork();
+		readonly GenericMembershipProvider _membershipProvider = new GenericMembershipProvider();
 
 		[AllowAnonymous]
 		public ActionResult Index ()
@@ -27,9 +18,8 @@ namespace RedBook.Controllers
 			if (HttpContext.User.Identity.IsAuthenticated) {
 				return RedirectToAction ("Logout", "Account");
 			}
-			else {
-				return View();
-			}
+
+			return View();
 		}
 
 		[HttpPost]
@@ -65,47 +55,46 @@ namespace RedBook.Controllers
 				}
 
 				return Json (new { isSuccess = false, error = registerModelState });
-			} 
-			else {
+			}
 
-				registerModelState.Username = "";
-				registerModelState.Password = "";
-				registerModelState.Email = "";
-				registerModelState.ConfirmPassword = "";
+			registerModelState.Username = "";
+			registerModelState.Password = "";
+			registerModelState.Email = "";
+			registerModelState.ConfirmPassword = "";
 
-				var userExist = _unitOfWork.UserRepository.GetOne (q => q.UserName == register.Username) != null;
-				var emailExist = _unitOfWork.UserRepository.GetOne (q => q.Email == register.Email) != null;
-				var passwordMinimumLength = register.Password.Length >= 8;
+			var userExist = _unitOfWork.UserRepository.GetOne(q => q.UserName == register.Username) != null;
+			var emailExist = _unitOfWork.UserRepository.GetOne(q => q.Email == register.Email) != null;
+			var passwordMinimumLength = register.Password.Length >= _membershipProvider.MinRequiredPasswordLength;
 
-				if (userExist || emailExist || passwordMinimumLength == false || register.ConfirmPassword != register.Password) {
+			if (userExist || emailExist || passwordMinimumLength == false || register.ConfirmPassword != register.Password)
+			{
 
-					if(userExist){
-						registerModelState.Username = "Username already exist.";
-					}
-
-					if(emailExist){
-						registerModelState.Email = "Email already exist.";
-					}
-
-					if(passwordMinimumLength == false){
-						registerModelState.Password = "Password must be at least 8 characters long.";
-					}
-
-					if (register.ConfirmPassword != register.Password) {
-						registerModelState.ConfirmPassword = "Confirm Password did not match.";
-					}
-
-					return Json (new { isSuccess = false, error = registerModelState });
-				} 
-				else {
-
-					var creationResult = _membershipProvider.CreateUser (register.Username, register.Password, register.Email);
-
-					return Json (new { isSuccess = creationResult });
-
+				if (userExist)
+				{
+					registerModelState.Username = "Username already exist.";
 				}
 
+				if (emailExist)
+				{
+					registerModelState.Email = "Email already exist.";
+				}
+
+				if (passwordMinimumLength == false)
+				{
+					registerModelState.Password = "Password must be at least 8 characters long.";
+				}
+
+				if (register.ConfirmPassword != register.Password)
+				{
+					registerModelState.ConfirmPassword = "Confirm Password did not match.";
+				}
+
+				return Json(new { isSuccess = false, error = registerModelState });
 			}
+
+			var creationResult = _membershipProvider.CreateUser(register.Username, register.Password, register.Email);
+
+			return Json(new { isSuccess = creationResult });
 
 		}
 
@@ -123,16 +112,15 @@ namespace RedBook.Controllers
 
 				return Json (new { isSuccess = false, error =  forgotPasswordModelState });
 			} 
-			else {
 
-				if (_unitOfWork.UserRepository.GetOne (q => q.Email == forgotPassword.Email) != null) {
-					return Json (new { isSuccess = true });
-				}
-				else {
-					return Json (new { isSuccess = false });
-				}
+			if (_unitOfWork.UserRepository.GetOne(q => q.Email == forgotPassword.Email) != null)
+			{
+				
 
+				return Json(new { isSuccess = true });
 			}
+
+			return Json(new { isSuccess = false, error = new ForgotPasswordModelState { Email = "Email not found."} });
 
 		}
 
@@ -199,12 +187,7 @@ namespace RedBook.Controllers
 					errorMessage += error.ErrorMessage;
 				}
 
-				if(key == "Username"){
-					forgotPasswordModelState.Username = errorMessage;
-				}
-				else if(key == "Email"){
-					forgotPasswordModelState.Email = errorMessage;
-				}
+				forgotPasswordModelState.Email = errorMessage;
 
 			}
 
